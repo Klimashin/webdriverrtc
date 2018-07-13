@@ -25,8 +25,8 @@ module.exports = function startAnalyzing (_, pcSelectorMethod, interval) {
             results: results
         };
 
-        for (var i = 0; i < results.length; ++i) {
-            var res = results[i];
+        for (var key in results) {
+            var res = results[key];
 
             if (res.type === 'inbound-rtp' && res.mediaType === 'audio') {
                 var inboundAudioStream = results[res.trackId];
