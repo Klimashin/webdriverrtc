@@ -80,15 +80,16 @@ module.exports = function startAnalyzing (_, pcSelectorMethod, interval) {
         pc.getStats().then(function (stats) {
             var items = {};
             var connectionType = {};
+            var candidatePair;
 
             for (var result of stats) {
                 var item = result[1];
                 items[item.id] = item;
-            }
 
-            var candidatePair = items.find(function (el) {
-                return el.type === 'candidate-pair' && el.state === 'succeeded';
-            });
+                if (item.type === 'candidate-pair' && item.state === 'succeeded') {
+                    candidatePair = item;
+                }
+            }
 
             if (candidatePair) {
                 var localCandidate = items[candidatePair.localCandidateId];
