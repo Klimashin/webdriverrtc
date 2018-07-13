@@ -32,7 +32,7 @@ exports.default = function () {
         var selectorMethod = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {
             return false;
         };
-        var res, ipAddressLocal, ipAddressRemote;
+        var res;
         return _regenerator2.default.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
@@ -63,20 +63,12 @@ exports.default = function () {
                         throw new _webdriverio.ErrorHandler('CommandError', 'WebRTC connection didn\'t get established');
 
                     case 9:
-                        ipAddressLocal = res.local.ipAddress.split(/:/);
-                        ipAddressRemote = res.remote.ipAddress.split(/:/);
-
-
-                        res.local.ipAddress = ipAddressLocal[0];
-                        res.local.port = ipAddressLocal[1];
-                        res.remote.ipAddress = ipAddressRemote[0];
-                        res.remote.port = ipAddressRemote[1];
 
                         this.connection = res;
                         this.analyzingScriptIsInjected = true;
                         return _context.abrupt('return', this.connection);
 
-                    case 18:
+                    case 12:
                     case 'end':
                         return _context.stop();
                 }
